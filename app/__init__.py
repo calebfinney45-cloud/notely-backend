@@ -14,10 +14,11 @@ def create_app():
     cors.init_app(app, resources={r"/*": {"origins": "*"}})  # tighten this before deploying
 
     from app.routes.auth import auth_bp
-    from app.routes.notes import notes_bp
+    from app.routes.notes import notes_bp, documents_bp
     from app.routes.users import users_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(notes_bp)
+    app.register_blueprint(documents_bp)
     app.register_blueprint(users_bp)
 
     return app
